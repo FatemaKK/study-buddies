@@ -16,8 +16,8 @@ groups.get("/", async (request, response) => {
 });
 
 groups.post("/", async (request, response) => {
-  const group = await createGroup(request.body);
-  response.status(200).json(group);
+  const newGroup = await createGroup(request.body);
+  response.status(200).json(newGroup);
 });
 
 groups.get("/:gid", async (request, response) => {
@@ -29,6 +29,6 @@ groups.get("/:gid", async (request, response) => {
 groups.put("/:gid", async (request, response) => {
   const updatedGroup = await updateGroup(request.params.gid, request.body);
   response.status(200).json(updatedGroup);
-});
+})
 
 module.exports = groups;

@@ -10,8 +10,8 @@ const getAllGroups = async () => {
 };
 
 const createGroup = async (group) => {
+  let { name, main_focus, date_formed, contact_email } = group;
   try {
-    const { name, main_focus, date_formed, contact_email } = group;
     const newGroup = await db.one(
       "INSERT INTO groups (name, main_focus, date_formed, contact_email) VALUES ($1, $2, $3, $4) RETURNING * ",
       [name, main_focus, date_formed, contact_email]
@@ -32,10 +32,10 @@ const getGroup = async (gid) => {
 };
 
 const updateGroup = async (gid, group) => {
+  let { name, main_focus, date_formed, contact_email } = group;
   try {
-    const { name, main_focus, date_formed, contact_email } = group;
     const updatedGroup = await db.one(
-      "UPDATE Groups SET name=$2, main_focus=$3, date_formed=$4, contact_email=$5 WHERE id=$1 RETURNING *",
+      "UPDATE groups SET name=$2, main_focus=$3, date_formed=$4, contact_email=$5 WHERE id=$1 RETURNING *",
       [name, main_focus, date_formed, contact_email, gid]
     );
     return updatedGroup;
