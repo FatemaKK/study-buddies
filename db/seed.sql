@@ -1,6 +1,6 @@
 \c study_buddies;
 
-INSERT INTO study_groups (id, name, main_focus, date_formed, contact_email )
+INSERT INTO groups ( id, name, main_focus, date_formed, contact_email )
 VALUES
 ('1','Geology Rocks','Geology','05/04/2022','geology@rocks.org'),
 ('2','You are Write!','Creative Writing','05/04/2022','creativewriting@write.net'),
@@ -8,7 +8,7 @@ VALUES
 ('4','Brush it Off','Art','05/04/2022','paintit@brush.net'),
 ('5','Writing Her-Story','History','05/04/2022','herstory@womens.org');
 
-INSERT INTO events (id, name, virtual_meeting_link, start_time, end_time, number_of_attendees, group_id)
+INSERT INTO events ( id, name, virtual_meeting_link, start_time, end_time, number_of_attendees, group_id)
 VALUES
 ('1', 'Rocks & Minerals', 'https://zoom.us/j/3984288312','11:00','13:00', 10, 1),
 ('2', 'Write it Out','https://zoom.us/j/3984288316','14:00','16:00', 22, 2),

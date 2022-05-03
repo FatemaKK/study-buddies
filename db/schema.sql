@@ -3,9 +3,9 @@ CREATE DATABASE study_buddies;
 
 \c study_buddies;
 
-DROP TABLE IF EXISTS study_groups;
+DROP TABLE IF EXISTS groups;
 
-CREATE TABLE study_groups (
+CREATE TABLE groups (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
     main_focus TEXT,
