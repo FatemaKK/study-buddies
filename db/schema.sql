@@ -10,7 +10,8 @@ CREATE TABLE groups (
     name TEXT NOT NULL,
     main_focus TEXT,
     date_formed TEXT,
-    contact_email TEXT
+    contact_email TEXT,
+    active BOOLEAN DEFAULT TRUE
 );
 
 DROP TABLE IF EXISTS events;
@@ -22,5 +23,5 @@ CREATE TABLE events (
     start_time TEXT,
     end_time TEXT,
     number_of_attendees INTEGER,
-    group_id INTEGER REFERENCES study_groups(id)
+    group_id INTEGER REFERENCES groups(id)
 );

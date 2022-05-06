@@ -1,12 +1,12 @@
 \c study_buddies;
 
-INSERT INTO groups ( id, name, main_focus, date_formed, contact_email )
+INSERT INTO groups ( id, name, main_focus, date_formed, contact_email, active )
 VALUES
-('1','Geology Rocks','Geology','05/04/2022','geology@rocks.org'),
-('2','You are Write!','Creative Writing','05/04/2022','creativewriting@write.net'),
-('3','Politically Correct','Political Science','05/04/2022','politicallyright@polisci.org'),
-('4','Brush it Off','Art','05/04/2022','paintit@brush.net'),
-('5','Writing Her-Story','History','05/04/2022','herstory@womens.org');
+('1','Geology Rocks','Geology','05/04/2022','geology@rocks.org', true),
+('2','You are Write!','Creative Writing','05/04/2022','creativewriting@write.net', false),
+('3','Politically Correct','Political Science','05/04/2022','politicallyright@polisci.org', true),
+('4','Brush it Off','Art','05/04/2022','paintit@brush.net', false),
+('5','Writing Her-Story','History','05/04/2022','herstory@womens.org', true);
 
 INSERT INTO events ( id, name, virtual_meeting_link, start_time, end_time, number_of_attendees, group_id)
 VALUES
