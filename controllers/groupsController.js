@@ -1,10 +1,11 @@
 const express = require("express");
 
 const {
-    getAllGroups,
-    createGroup,
-    getGroup,
-    updateGroup,
+  getAllGroups,
+  createGroup,
+  getGroup,
+  updateGroup,
+  getGroupEvents,
 } = require("../queries/groups");
 
 const groups = express.Router();
@@ -21,7 +22,7 @@ groups.post("/", async (request, response) => {
 });
 
 groups.get("/:gid", async (request, response) => {
-  console.log("GET request to /groups/:gid");  
+  console.log("GET request to /groups/:gid");
   const group = await getGroup(request.params.gid);
   response.status(200).json(group);
 });
@@ -29,6 +30,16 @@ groups.get("/:gid", async (request, response) => {
 groups.put("/:gid", async (request, response) => {
   const updatedGroup = await updateGroup(request.params.gid, request.body);
   response.status(200).json(updatedGroup);
-})
+});
+
+groups.get("/:gid/events", async (request, response) => {
+  const groupEvents = await getGroupEvents(request.params.gid);
+  response.status(200).json(groupEvents);
+});
+
+groups.post("/:gid/events", async (request, response) => {
+  const newEvent = await createEvent(request.body);
+  response.status(200).json(newEvent);
+});
 
 module.exports = groups;

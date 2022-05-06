@@ -1,4 +1,4 @@
-const db = require("../db/dbConfig.js");
+const db = require("../db/dbConfig");
 
 const getAllGroups = async () => {
   try {
@@ -44,9 +44,29 @@ const updateGroup = async (gid, group) => {
   }
 };
 
+const getGroupEvents = async (gid) => {
+  const groupEvents = await db.any(
+    "SELECT * FROM events WHERE group_id=$1",
+    gid
+  );
+  return groupEvents;
+};
+
+const createEvent = async (event) => {
+  let { name, virtual_meeting_link, start_time, end_time, number_of_attendees, group_id } = event;
+  try {
+    const newEvent = await db.one("INSERT INTO events (name, virtual_meeting_link, start_time, end_time, number_of_attendees, group_id) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *", [name, virtual_meeting_link, start_time, end_time, number_of_attendees, group_id])
+    return newEvent;
+  } catch (error) {
+    return error
+  }
+}
+
 module.exports = {
   getAllGroups,
   createGroup,
   getGroup,
-  updateGroup
+  updateGroup,
+  getGroupEvents,
+  createEvent,
 };
